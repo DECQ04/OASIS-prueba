@@ -9,7 +9,7 @@ echo "Esto es un numero:".$numero"<br>";
 	$palabra ="ITI";
 	echo "Esto es una palabra:".$palabra"<br>";
 	echo"<br><br>;
-   	
+   	 
 	//booleana
 	$booleana =true;
 	echo "Esto es una varaible booleana:".$booleana"<br>";

@@ -1,4 +1,4 @@
-<?php
+<?php 
 
     #Clase 
     //Una clase es un modelo

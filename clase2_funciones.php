@@ -13,7 +13,7 @@
 	function despedida($adios){
 	
 	echo"$adios<br>";
-	
+	 
 	}
 
 	despedida("adios salida");
