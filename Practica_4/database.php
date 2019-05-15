@@ -54,7 +54,7 @@ class Database{
         /*if ($return->==$) {
             header('Location: mipagina.php');
         }*/
-        echo $return;
+        return $return;
     }
 
 
