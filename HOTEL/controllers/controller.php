@@ -439,7 +439,8 @@ class MvcController{
 
 		if(isset($_POST["id_clienteEditar"])){
 
-			$datosController = array( "id_cliente"=>$_POST["id_clienteEditar"],
+			$datosController = array(  "id"=>$_POST["idEditar"],
+						 			  "id_cliente"=>$_POST["id_clienteEditar"],
 									  "id_habitacion"=>$_POST["id_habitacionEditar"],
 									  "fecha_entrada"=>$_POST["fecha_entradaEditar"],
 									  "dias_ocupado"=>$_POST["dias_ocupadoEditar"],
