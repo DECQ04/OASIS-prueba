@@ -1,3 +1,17 @@
+<?php
+
+session_start();
+
+if(!$_SESSION["validar"]){
+
+	header("location:index.php?action=ingresar");
+    error_reporting(0);
+	exit();
+
+}
+
+?>
+
 <h1>REGISTRO DE HABITACIONES</h1>
 
 <form method="post">
