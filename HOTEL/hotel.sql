@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-05-2019 a las 00:47:30
+-- Tiempo de generación: 28-05-2019 a las 00:24:46
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.4
 
@@ -34,6 +34,15 @@ CREATE TABLE `administradores` (
   `password` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `administradores`
+--
+
+INSERT INTO `administradores` (`id`, `usuario`, `password`) VALUES
+(5, 'Daniel Eduardo Cervantes Quintanilla', '2'),
+(6, 'Daniel Eduardo Cervantes Quintanilla', '2'),
+(7, 'Daniel', 'd');
+
 -- --------------------------------------------------------
 
 --
@@ -47,6 +56,13 @@ CREATE TABLE `clientes` (
   `metodo_pago` varchar(30) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`id`, `nombre`, `tipo`, `metodo_pago`) VALUES
+(1, 'T', 'habitual', 'efectivo');
+
 -- --------------------------------------------------------
 
 --
@@ -55,9 +71,18 @@ CREATE TABLE `clientes` (
 
 CREATE TABLE `habitaciones` (
   `id` int(11) NOT NULL,
-  `tipo` int(11) NOT NULL,
+  `tipo` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
   `precio` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `habitaciones`
+--
+
+INSERT INTO `habitaciones` (`id`, `tipo`, `precio`) VALUES
+(2, 'simple', 101),
+(3, 'doble', 300),
+(4, 'matrimonial', 500);
 
 -- --------------------------------------------------------
 
@@ -85,6 +110,13 @@ CREATE TABLE `reservas` (
   `dias_ocupado` int(11) NOT NULL,
   `pago_total` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `reservas`
+--
+
+INSERT INTO `reservas` (`id`, `id_cliente`, `id_habitacion`, `fecha_entrada`, `dias_ocupado`, `pago_total`) VALUES
+(1, 1, 2, '2019-05-22', 2, 200);
 
 --
 -- Índices para tablas volcadas
@@ -130,19 +162,19 @@ ALTER TABLE `reservas`
 -- AUTO_INCREMENT de la tabla `administradores`
 --
 ALTER TABLE `administradores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `habitaciones`
 --
 ALTER TABLE `habitaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `recepcionistas`
@@ -154,7 +186,7 @@ ALTER TABLE `recepcionistas`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
