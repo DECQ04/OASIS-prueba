@@ -25,16 +25,16 @@ if(!$_SESSION["validar"]){
 
 </form>
 
-<?php
+<?php// parametros para el registro arriba
 /*<input type="email" placeholder="Email" name="emailRegistro" required>*/
-$registro = new MvcController();
-$registro -> registroClienteController();
+$registro = new MvcController();// $registro tipo MvcController, instancia
+$registro -> registroClienteController();// usa la funcion de MvcController para guardar
 
-if(isset($_GET["action"])){
+if(isset($_GET["action"])){//si esta action en la url
 
-	if($_GET["action"] == "okC"){
+	if($_GET["action"] == "okC"){//pone ok en action para usar otra funcion de la clase Pagina en enlaces.php y redireccionar
 
-		echo "Registro Exitoso";
+		echo "Registro Exitoso";// mensaje
 	
 	}
 

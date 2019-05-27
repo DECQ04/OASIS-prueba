@@ -1,3 +1,18 @@
+<?php
+
+session_start();
+
+if(!$_SESSION["validar"]){
+
+	header("location:index.php?action=ingresar");
+    error_reporting(0);
+	exit();
+
+}
+
+?>
+
+
 <h1>RESERVA DE HABITACION</h1>
 
 <form method="post">
@@ -11,15 +26,15 @@
 
 </form>
 
-<?php
-$registro = new MvcController();
-$registro -> reservaHabitacionController();
+<?php// parametros para el registro arriba
+$registro = new MvcController();// $registro tipo MvcController, instancia
+$registro -> reservaHabitacionController();// usa la funcion de MvcController para guardar
 
-if(isset($_GET["action"])){
+if(isset($_GET["action"])){//si esta action en la url
 
-	if($_GET["action"] == "okR"){
+	if($_GET["action"] == "okR"){//pone ok en action para usar otra funcion de la clase Pagina en enlaces.php y redireccionar
 
-		echo "Reserva Exitosa";
+		echo "Reserva Exitosa";// mensaje
 	
 	}
 

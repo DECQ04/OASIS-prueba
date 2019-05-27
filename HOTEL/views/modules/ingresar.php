@@ -12,14 +12,14 @@
 
 <?php
 
-$ingreso = new MvcController();
-$ingreso -> ingresoUsuarioController();
+$ingreso = new MvcController();//crea una instancia llamada $ingreso de tipo MvcController( esta tiene multiples funciones)
+$ingreso -> ingresoUsuarioController();// usa el metodo de controller para iniciar la sesion con el usuario
 
-if(isset($_GET["action"])){
+if(isset($_GET["action"])){// verifica "action" en la url
 
 	if($_GET["action"] == "fallo"){
 
-		echo "Fallo al ingresar";
+		echo "Fallo al ingresar";//muestra mensaje "Fallo al ingresar" solo si falla al iniciar sesion
 	
 	}
 

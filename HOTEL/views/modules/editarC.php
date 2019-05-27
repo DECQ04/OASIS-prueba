@@ -18,9 +18,9 @@ if(!$_SESSION["validar"]){
 	
 	<?php
 
-	$editarUsuario = new MvcController();
-	$editarUsuario -> editarClienteController();
-	$editarUsuario -> actualizarClienteController();
+	$editarUsuario = new MvcController();//crea una instancia llamada $editarUsuario de tipo MvcController( esta tiene multiples funciones)
+	$editarUsuario -> editarClienteController();//usa el metodo de controller que a su vez usa el metodo de model para mostrar el usuario a editar
+	$editarUsuario -> actualizarClienteController();//cambia la informacion con la funcion de controller ,que a su vez usa la funcion en model con la sentecia para cambiar los datos
 
 	?>
 

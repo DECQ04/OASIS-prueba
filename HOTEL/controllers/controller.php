@@ -7,27 +7,27 @@ class MvcController{
 
 	public function pagina(){	
 		
-		include "views/template.php";
+		include "views/template.php";//usa la plantilla
 	
 	}
 
 	#ENLACES
-	#-------------------------------------
+	#-------------------------------------Verifica que el parametro action se mande a la funcion de enlacesPagina model para redireccionar a la pagina correspóndiente
 
 	public function enlacesPaginasController(){
 
-		if(isset( $_GET['action'])){
+		if(isset( $_GET['action'])){//verifica que este en la url
 			
-			$enlaces = $_GET['action'];
+			$enlaces = $_GET['action'];//asigna a la variable $enlaces
 		
 		}
 
 		else{
 
-			$enlaces = "index";
+			$enlaces = "index";//sino redireccionara a inicio
 		}
 
-		$respuesta = Paginas::enlacesPaginasModel($enlaces);
+		$respuesta = Paginas::enlacesPaginasModel($enlaces);//regresa la direccion en la pagina correspondiente
 
 		include $respuesta;
 
@@ -39,15 +39,15 @@ class MvcController{
 	#------------------------------------
 	public function registroUsuarioController(){
 
-		if(isset($_POST["usuarioRegistro"])){
+		if(isset($_POST["usuarioRegistro"])){// si hay algo en usuarioRegistro hace el array y usa la funcion de Datos para guardarlos
 
 			$datosController = array( "usuario"=>$_POST["usuarioRegistro"], 
 								      "password"=>$_POST["passwordRegistro"]);
 								      //"email"=>$_POST["emailRegistro"]);
 
-			$respuesta = Datos::registroUsuarioModel($datosController, "administradores");
+			$respuesta = Datos::registroUsuarioModel($datosController, "administradores");//funcion para guardar en la tabla administradores
 
-			if($respuesta == "success"){
+			if($respuesta == "success"){//si  se guardo mandara success y el header cambia a action=ok
 
 				header("location:index.php?action=ok");
 
@@ -55,17 +55,17 @@ class MvcController{
 
 			else{
 
-				header("location:index.php");
+				header("location:index.php");// sino redirecciona a index
 			}
 
 		}
 
 	}
 		#REGISTRO DE CLIENTES
-	#------------------------------------
+	#------------------------------------MODIFICACION DE REGISTRO USUARIOS
 	public function registroClienteController(){
 
-		if(isset($_POST["nombreClienteRegistro"])){
+		if(isset($_POST["nombreClienteRegistro"])){//VERIFICA QUE NO ESTE VACIO
 
 			$datosController = array( "nombre"=>$_POST["nombreClienteRegistro"], 
 			                          "tipo"=>$_POST["tipoClienteRegistro"], 
@@ -89,7 +89,7 @@ class MvcController{
 
 	}
 		#REGISTRO DE HABITACION
-	#------------------------------------
+	#------------------------------------MODIFICACION DE REGISTRO USUARIOS
 	public function registroHabitacionController(){
 
 		if(isset($_POST["tipoHabitacionRegistro"])){
@@ -117,7 +117,7 @@ class MvcController{
 	
 	
 	#RESERVA DE HABITACIONES
-	#------------------------------------
+	#------------------------------------MODIFICACION DE REGISTRO USUARIOS
 	public function reservaHabitacionController(){
 
 		if(isset($_POST["IdClienteReserva"])){
@@ -145,7 +145,7 @@ class MvcController{
 
 	}
 	#INGRESO DE USUARIOS
-	#------------------------------------
+	#------------------------------------MODIFICACION DE REGISTRO USUARIOS
 	public function ingresoUsuarioController(){
 
 		if(isset($_POST["usuarioIngreso"])){
@@ -178,7 +178,8 @@ class MvcController{
 
 
 	#VISTA DE USUARIOS
-	#------------------------------------
+	#------------------------------------Todas las vistas muestran una tabla con las caracteristicas necesarias 
+	# para visualizar los objetos, para esto utilizan una funcion en la parte del modelo, respectivo a cada vista
 
 	public function vistaUsuariosController(){
 
@@ -186,20 +187,23 @@ class MvcController{
 
 		#El constructor foreach proporciona un modo sencillo de iterar sobre arrays. foreach funciona sólo sobre arrays y objetos, y emitirá un error al intentar usarlo con una variable de un tipo diferente de datos o una variable no inicializada.
 		#FALTA EMAIL DESPUES DE PASSWORD
-		foreach($respuesta as $row => $item){
+		foreach($respuesta as $row => $item){//solo muestra una tabla y un boton con iconos guardados en la carpeta "icons"
 		echo'<tr>
 				<td>'.$item["usuario"].'</td>
 				<td>'.$item["password"].'</td>
 				
-				<td><a href="index.php?action=editar&id='.$item["id"].'"><button>Editar</button></a></td>
-				<td><a href="index.php?action=usuarios&idBorrar='.$item["id"].'"><button>Borrar</button></a></td>
+				<td><a href="index.php?action=editar&id='.$item["id"].'">
+				<img src="icons/descarga.png" alt="Enviar" width="30" height="30"></a></td>
+				<td><a href="index.php?action=usuarios&idBorrar='.$item["id"].'">
+				<img src="icons/delete.png" alt="Enviar" width="20" height="20"></a></td>
+
 			</tr>';
 
 		}
 
 	}
 	#VISTA DE CLIENTES
-	#------------------------------------
+	#------------------------------------MODIFICACION DE VISTA USUARIOS
 
 	public function vistaClienteController(){
 
@@ -212,8 +216,8 @@ class MvcController{
 				<td>'.$item["nombre"].'</td>
 				<td>'.$item["tipo"].'</td>
 				<td>'.$item["metodo_pago"].'</td>
-				<td><a href="index.php?action=editarC&id='.$item["id"].'"><button>Editar</button></a></td>
-				<td><a href="index.php?action=usuarios&idBorrarC='.$item["id"].'"><button>Borrar</button></a></td>
+				<td><a href="index.php?action=editarC&id='.$item["id"].'"><img src="icons/descarga.png" alt="Enviar" width="30" height="30"></a></td>
+				<td><a href="index.php?action=usuarios&idBorrarC='.$item["id"].'"><img src="icons/delete.png" alt="Enviar" width="20" height="20"></a></td>
 			</tr>';
 
 		}
@@ -221,7 +225,7 @@ class MvcController{
 	}
 
 	#VISTA DE HABITACIONES
-	#------------------------------------
+	#------------------------------------MODIFICACION DE VISTA USUARIOS
 
 	public function vistaHabitacionController(){
 
@@ -234,15 +238,15 @@ class MvcController{
 				
 				<td>'.$item["tipo"].'</td>
 				<td>'.$item["precio"].'</td>
-				<td><a href="index.php?action=editarH&id='.$item["id"].'"><button>Editar</button></a></td>
-				<td><a href="index.php?action=usuarios&idBorrarH='.$item["id"].'"><button>Borrar</button></a></td>
+				<td><a href="index.php?action=editarH&id='.$item["id"].'"><img src="icons/descarga.png" alt="Enviar" width="30" height="30"></a></td>
+				<td><a href="index.php?action=usuarios&idBorrarH='.$item["id"].'"><img src="icons/delete.png" alt="Enviar" width="30" height="30"></a></td>
 			</tr>';
 
 		}
 
 	}
 	#VISTA DE RESERVACIONES
-	#------------------------------------
+	#------------------------------------MODIFICACION DE VISTA USUARIOS
 
 	public function vistaReservacionController(){
 
@@ -257,8 +261,8 @@ class MvcController{
 				<td>'.$item["fecha_entrada"].'</td>
 				<td>'.$item["dias_ocupado"].'</td>
 				<td>'.$item["pago_total"].'</td>
-				<td><a href="index.php?action=editarR&id='.$item["id"].'"><button>Editar</button></a></td>
-				<td><a href="index.php?action=usuarios&idBorrarR='.$item["id"].'"><button>Borrar</button></a></td>
+				<td><a href="index.php?action=editarR&id='.$item["id"].'"><img src="icons/descarga.png" alt="Enviar" width="30" height="30"></a></td>
+				<td><a href="index.php?action=usuarios&idBorrarR='.$item["id"].'"><img src="icons/delete.png" alt="Enviar" width="30" height="30"></a></td>
 			</tr>';
 
 		}
@@ -269,12 +273,12 @@ class MvcController{
 
 
 	#EDITAR USUARIO
-	#------------------------------------<input type="email" value="'.$respuesta["email"].'" name="emailEditar" required>
+	#------------------------------------<MUESTRA LOS DATOS DE USUARIOS PARA EDITAR
 
 	public function editarUsuarioController(){
 
 		$datosController = $_GET["id"];
-		$respuesta = Datos::editarUsuarioModel($datosController, "administradores");
+		$respuesta = Datos::editarUsuarioModel($datosController, "administradores");//USA LA FUNCION PARA TRAER LOS DATOS CORRESPONDIENTES (COMO TABLA)
 
 		echo'<input type="hidden" value="'.$respuesta["id"].'" name="idEditar">
 
@@ -289,7 +293,7 @@ class MvcController{
 	}
 
 	#EDITAR CLIENTE
-	#------------------------------------<input type="email" value="'.$respuesta["email"].'" name="emailEditar" required>
+	#------------------------------------<MODIFICACION DE EDITAR USUARIOS
 
 	public function editarClienteController(){
 
@@ -309,7 +313,8 @@ class MvcController{
 
 	}
 	#EDITAR HABITACION
-	#------------------------------------<input type="email" value="'.$respuesta["email"].'" name="emailEditar" required>
+	#------------------------------------<MODIFICACION DE EDITAR USUARIOS
+
 
 	public function editarHabitacionController(){
 
@@ -326,7 +331,8 @@ class MvcController{
 
 	}
 	#EDITAR RESERVACION
-	#------------------------------------<input type="email" value="'.$respuesta["email"].'" name="emailEditar" required>
+	#------------------------------------<MODIFICACION DE EDITAR USUARIOS
+
 
 	public function editarReservacionController(){
 
@@ -334,11 +340,11 @@ class MvcController{
 		$respuesta = Datos::editarReservacionModel($datosController, "reservas");
 
 		echo'<input type="hidden" value="'.$respuesta["id"].'" name="idEditar">
-			 <input type="text" value="'.$respuesta["id_cliente"].'" name="id_clienteEditar">
-			 <input type="text" value="'.$respuesta["id_habitacion"].'" name="id_habitacionEditar">
-			 <input type="text" value="'.$respuesta["fecha_entrada"].'" name="fecha_entradaEditar" required>
+			 <input type="text" value="'.$respuesta["id_cliente"].'" name="id_clienteEditar" required>
+			 <input type="text" value="'.$respuesta["id_habitacion"].'" name="id_habitacionEditar" required>
+			 <input type="date" value="'.$respuesta["fecha_entrada"].'" name="fecha_entradaEditar" required>
 			 <input type="text" value="'.$respuesta["dias_ocupado"].'" name="dias_ocupadoEditar" required>
-			 <input type="text" value="'.$respuesta["pago_total"].'" name="pago_totalEditar">
+			 <input type="text" value="'.$respuesta["pago_total"].'" name="pago_totalEditar" required>
 
 			 
 
@@ -349,8 +355,8 @@ class MvcController{
 
 
 	#ACTUALIZAR USUARIO
-	#------------------------------------  "email"=>$_POST["emailEditar"]);
-	public function actualizarUsuarioController(){
+	#------------------------------------  
+	public function actualizarUsuarioController(){//SI HAY DATOS HACE UN ARRAY , Y USA LA FUNCION DE "Datos" para cambiar los datos en la tabla por los ingresados
 
 		if(isset($_POST["usuarioEditar"])){
 
@@ -363,13 +369,13 @@ class MvcController{
 
 			if($respuesta == "success"){
 
-				header("location:index.php?action=cambio");
+				header("location:index.php?action=cambio");//si  se guardo mandara success y el header cambia a action=cambio(esto desencadena unna accion dependiendo, esta en el modelo en "enlaces")
 
 			}
 
 			else{
 
-				echo "error";
+				echo "error";//si no es success , manda error
 
 			}
 
@@ -377,7 +383,7 @@ class MvcController{
 	
 	}
 	#ACTUALIZAR CLIENTE
-	#------------------------------------  "email"=>$_POST["emailEditar"]);
+	#------------------------------------  MODIFICADOR DE ACTUALIZAR USUARIO
 	public function actualizarClienteController(){
 
 		if(isset($_POST["nombreEditar"])){
@@ -406,7 +412,7 @@ class MvcController{
 	
 	}
 	#ACTUALIZAR HABITACION
-	#------------------------------------  "email"=>$_POST["emailEditar"]);
+	#------------------------------------  MODIFICADOR DE ACTUALIZAR USUARIO
 	public function actualizarHabitacionController(){
 
 		if(isset($_POST["tipoEditar"])){
@@ -434,13 +440,13 @@ class MvcController{
 	
 	}
     #ACTUALIZAR RESERVACION
-	#------------------------------------  "email"=>$_POST["emailEditar"]);
+	#------------------------------------  MODIFICADOR DE ACTUALIZAR USUARIO
 	public function actualizarReservacionController(){
 
 		if(isset($_POST["id_clienteEditar"])){
 
-			$datosController = array(  "id"=>$_POST["idEditar"],
-						 			  "id_cliente"=>$_POST["id_clienteEditar"],
+			$datosController = array( "id"=>$_POST["idEditar"],
+									  "id_cliente"=>$_POST["id_clienteEditar"],
 									  "id_habitacion"=>$_POST["id_habitacionEditar"],
 									  "fecha_entrada"=>$_POST["fecha_entradaEditar"],
 									  "dias_ocupado"=>$_POST["dias_ocupadoEditar"],
@@ -469,7 +475,7 @@ class MvcController{
 
 	#BORRAR USUARIO
 	#------------------------------------
-	public function borrarUsuarioController(){
+	public function borrarUsuarioController(){//Usa ael id para mandar una sentencia sql que borra donde encuentre un registro con el mismo id,la sentencia esta en "models"->"crud"->"borrarUsuarioModel"
 
 		if(isset($_GET["idBorrar"])){
 
@@ -487,7 +493,7 @@ class MvcController{
 
 	}
 	#BORRAR CLIENTE
-	#------------------------------------
+	#------------------------------------MODIFICADOR DE #BORRAR USUARIO
 	public function borrarClienteController(){
 
 		if(isset($_GET["idBorrarC"])){
@@ -506,7 +512,7 @@ class MvcController{
 
 	}
 	#BORRAR HABITACION
-	#------------------------------------
+	#------------------------------------MODIFICADOR DE #BORRAR USUARIO
 	public function borrarHabitacionController(){
 
 		if(isset($_GET["idBorrarH"])){
@@ -525,7 +531,7 @@ class MvcController{
 
 	}
 	#BORRAR RESERVACION
-	#------------------------------------
+	#------------------------------------MODIFICADOR DE #BORRAR USUARIO
 	public function borrarReservacionController(){
 
 		if(isset($_GET["idBorrarR"])){
@@ -537,11 +543,11 @@ class MvcController{
 			if($respuesta == "success"){
 
 				header("location:index.php?action=usuarios");
-			
+				
 			}
 
 		}
-
+		
 	}
 
 }

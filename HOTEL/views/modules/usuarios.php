@@ -2,14 +2,18 @@
 #SI HAY SESION SINO NO
 session_start();
 
-if(!$_SESSION["validar"]){
+if(!$_SESSION["validar"]){//si no es verdad no ingresa porque no hay sesion
 
-	header("location:index.php?action=ingresar");
+	header("location:index.php?action=ingresar"); //redirecciona a validar
     error_reporting(0);
 	exit();
 
 }
 
+
+
+//  muestra tablas para editar y borrar registros, muestra los atributos correspondientes 
+# en la primer fila mas dos columnas en blanco, debajo iran los botones para borrar y editar
 ?>
 
 <h1>USUARIOS</h1>
@@ -62,9 +66,9 @@ if(!$_SESSION["validar"]){
 			
 			<?php
 
-			$vistaCliente = new MvcController();
-			$vistaCliente -> vistaClienteController();
-			$vistaCliente -> borrarClienteController();
+			$vistaCliente = new MvcController();//instancia
+			$vistaCliente -> vistaClienteController();//muestra datos 
+			$vistaCliente -> borrarClienteController();// funcion para borrar
 
 			?>
 
@@ -92,9 +96,9 @@ if(!$_SESSION["validar"]){
 			
 			<?php
 
-			$vistaCliente = new MvcController();
-			$vistaCliente -> vistaHabitacionController();
-			$vistaCliente -> borrarHabitacionController();
+			$vistaCliente = new MvcController();//instancia
+			$vistaCliente -> vistaHabitacionController();//muestra datos 
+			$vistaCliente -> borrarHabitacionController();// funcion para borrar
 
 			?>
 
@@ -125,10 +129,10 @@ if(!$_SESSION["validar"]){
 			
 			<?php
 
-			$vistaCliente = new MvcController();
-			$vistaCliente -> vistaReservacionController();
-			$vistaCliente -> borrarReservacionController();
-
+			$vistaCliente = new MvcController();//instancia
+			$vistaCliente -> vistaReservacionController();//muestra datos 
+			$vistaCliente -> borrarReservacionController();// funcion para borrar
+			error_reporting(0);
 			?>
 
 		</tbody>

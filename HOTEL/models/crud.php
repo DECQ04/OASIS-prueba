@@ -8,7 +8,7 @@ class Datos extends Conexion{
 
 	#REGISTRO DE USUARIOS
 	#-------------------------------------
-	public function registroUsuarioModel($datosModel, $tabla){
+	public function registroUsuarioModel($datosModel, $tabla){//Obtiene el array de la funcion de "controller.php" con los datos para la sentencia sql menos la tabla, ese es el otro parametro
 
 		#prepare() Prepara una sentencia SQL para ser ejecutada por el método PDOStatement::execute(). La sentencia SQL puede contener cero o más marcadores de parámetros con nombre (:name) o signos de interrogación (?) por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada. Ayuda a prevenir inyecciones SQL eliminando la necesidad de entrecomillar manualmente los parámetros.
 
@@ -18,25 +18,24 @@ class Datos extends Conexion{
 
 		$stmt->bindParam(":usuario", $datosModel["usuario"], PDO::PARAM_STR);
 		$stmt->bindParam(":password", $datosModel["password"], PDO::PARAM_STR);
-		//$stmt->bindParam(":email", $datosModel["email"], PDO::PARAM_STR);
 
-		if($stmt->execute()){
+		if($stmt->execute()){//ejecuta y dependiendo si se realiza la accion:
 
-			return "success";
+			return "success";//regresa "success"
 
 		}
 
 		else{
 
-			return "error";
+			return "error";// o regresa "error"
 
 		}
 
-		$stmt->close();
+		$stmt->close();//y siempre cierra la sentencia $stmt
 
 	}
 	#RESERVA DE HABITACION
-	#-------------------------------------
+	#-------------------------------------MODIFICACION DE #REGISTRO DE USUARIOS
 	public function reservaHabitacionModel($datosModel, $tabla){
 
 		#prepare() Prepara una sentencia SQL para ser ejecutada por el método PDOStatement::execute(). La sentencia SQL puede contener cero o más marcadores de parámetros con nombre (:name) o signos de interrogación (?) por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada. Ayuda a prevenir inyecciones SQL eliminando la necesidad de entrecomillar manualmente los parámetros.
@@ -69,7 +68,7 @@ class Datos extends Conexion{
 
 	}
 	#REGISTRO DE CLIENTES
-	#-------------------------------------
+	#-------------------------------------MODIFICACION DE #REGISTRO DE USUARIOS
 	public function registroClienteModel($datosModel, $tabla){
 
 		#prepare() Prepara una sentencia SQL para ser ejecutada por el método PDOStatement::execute(). La sentencia SQL puede contener cero o más marcadores de parámetros con nombre (:name) o signos de interrogación (?) por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada. Ayuda a prevenir inyecciones SQL eliminando la necesidad de entrecomillar manualmente los parámetros.
@@ -98,8 +97,8 @@ class Datos extends Conexion{
 		$stmt->close();
 
 	}
-		#REGISTRO DE HABITACION
-	#-------------------------------------
+	#REGISTRO DE HABITACION
+	#-------------------------------------MODIFICACION DE #REGISTRO DE USUARIOS
 	public function registroHabitacionModel($datosModel, $tabla){
 
 		#prepare() Prepara una sentencia SQL para ser ejecutada por el método PDOStatement::execute(). La sentencia SQL puede contener cero o más marcadores de parámetros con nombre (:name) o signos de interrogación (?) por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada. Ayuda a prevenir inyecciones SQL eliminando la necesidad de entrecomillar manualmente los parámetros.
@@ -128,7 +127,7 @@ class Datos extends Conexion{
 
 	}
 	#INGRESO USUARIO
-	#-------------------------------------
+	#-------------------------------------MODIFICACION DE #REGISTRO DE USUARIOS
 	public function ingresoUsuarioModel($datosModel, $tabla){
 
 		$stmt = Conexion::conectar()->prepare("SELECT usuario, password FROM $tabla WHERE usuario = :usuario");	
@@ -142,22 +141,25 @@ class Datos extends Conexion{
 
 	}
 
+
+
+	
 	#VISTA USUARIOS
-	#------------------------------------- quite email despues de password
+	#------------------------------------- 
 
-	public function vistaUsuariosModel($tabla){
+	public function vistaUsuariosModel($tabla){//MUESTRA TODO LO QUE HAYA EN LA TABLA
 
-		$stmt = Conexion::conectar()->prepare("SELECT id, usuario, password FROM $tabla");	
-		$stmt->execute();
+		$stmt = Conexion::conectar()->prepare("SELECT id, usuario, password FROM $tabla");	//SENTENCIA, SOLO QUE TIENE PARAMETROS DEFINIDOS EN LUGAR DE UN *
+		$stmt->execute();//EJECUTA
 
 		#fetchAll(): Obtiene todas las filas de un conjunto de resultados asociado al objeto PDOStatement. 
-		return $stmt->fetchAll();
+		return $stmt->fetchAll();//Lo de arriba X2
 
-		$stmt->close();
+		$stmt->close();//cierra el $stmt
 
 	}
 	#VISTA CLIENTES
-	#------------------------------------- quite email despues de password
+	#-------------------------------------MODIFICACION DE #VISTA CLIENTES
 
 	public function vistaClienteModel($tabla){
 
@@ -171,7 +173,7 @@ class Datos extends Conexion{
 
 	}
 	#VISTA HABITACIONES
-	#------------------------------------- quite email despues de password
+	#-------------------------------------MODIFICACION DE #VISTA CLIENTES
 
 	public function vistaHabitacionModel($tabla){
 
@@ -185,7 +187,7 @@ class Datos extends Conexion{
 
 	}
 	#VISTA RESERVACIONES
-	#------------------------------------- quite email despues de password
+	#-------------------------------------MODIFICACION DE #VISTA CLIENTES
 
 	public function vistaReservacionModel($tabla){
 
@@ -204,21 +206,21 @@ class Datos extends Conexion{
 
 
 	#EDITAR USUARIO
-	#-------------------------------------quite email despues de password
+	#-------------------------------------
 
-	public function editarUsuarioModel($datosModel, $tabla){
+	public function editarUsuarioModel($datosModel, $tabla){# SELECCIONA  TODO DE LA TABLA  INGRESADA EN EL PARAMETRO  DONDE EL ID SEA IGUAL AL IDDE LA BD
 
-		$stmt = Conexion::conectar()->prepare("SELECT id, usuario, password FROM $tabla WHERE id = :id");
-		$stmt->bindParam(":id", $datosModel, PDO::PARAM_INT);	
-		$stmt->execute();
+		$stmt = Conexion::conectar()->prepare("SELECT id, usuario, password FROM $tabla WHERE id = :id");//SENTENCIA = $stmt
+		$stmt->bindParam(":id", $datosModel, PDO::PARAM_INT);//parametros
+		$stmt->execute();//ejecuta el $stmt 
 
-		return $stmt->fetch();
+		return $stmt->fetch();//trae registro
 
-		$stmt->close();
+		$stmt->close();//cierra $stmt
 
 	}
 	#EDITAR CLIENTE
-	#-------------------------------------quite email despues de password
+	#-------------------------------------MODIFICACION DE #EDITAR USUARIO
 
 	public function editarClienteModel($datosModel, $tabla){
 
@@ -232,7 +234,8 @@ class Datos extends Conexion{
 
 	}
 	#EDITAR HABITACION
-	#-------------------------------------quite email despues de password
+	#-------------------------------------MODIFICACION DE #EDITAR USUARIO
+
 
 	public function editarHabitacionModel($datosModel, $tabla){
 
@@ -246,7 +249,8 @@ class Datos extends Conexion{
 
 	}
 	#EDITAR RESERVACION
-	#-------------------------------------quite email despues de password
+	#-------------------------------------MODIFICACION DE #EDITAR USUARIO
+
 
 	public function editarReservacionModel($datosModel, $tabla){
 
@@ -264,18 +268,17 @@ class Datos extends Conexion{
 
 
 	#ACTUALIZAR USUARIO
-	#-------------------------------------quite email despues de password en linea 88,comente la 94, email = :email
+	#-------------------------------------
 
-	public function actualizarUsuarioModel($datosModel, $tabla){
+	public function actualizarUsuarioModel($datosModel, $tabla){ //REQUIERE DE UN ARRAY CON LOS ATRIBUTOS DE LA TABLA Y EL NOMBRE PARA CAMBIAR LOS DATOS DONDE ENCUENTRE UN ID SIMILAR
 
 		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET usuario = :usuario, password = :password WHERE id = :id");
 
 		$stmt->bindParam(":usuario", $datosModel["usuario"], PDO::PARAM_STR);
 		$stmt->bindParam(":password", $datosModel["password"], PDO::PARAM_STR);
-		//$stmt->bindParam(":email", $datosModel["email"], PDO::PARAM_STR);
 		$stmt->bindParam(":id", $datosModel["id"], PDO::PARAM_INT);
 
-		if($stmt->execute()){
+		if($stmt->execute()){// ERROR SI NO FUNCIONA LA SENTENCIA = $stmt, success si logra hacerlo
 
 			return "success";
 
@@ -291,7 +294,7 @@ class Datos extends Conexion{
 
 	}
 	#ACTUALIZAR CLIENTE
-	#-------------------------------------quite email despues de password en linea 88,comente la 94, email = :email
+	#-------------------------------------MODIFICACION DE #ACTUALIZAR USUARIO
 
 	public function actualizarClienteModel($datosModel, $tabla){
 
@@ -318,7 +321,7 @@ class Datos extends Conexion{
 
 	}
 	#ACTUALIZAR HABITACION
-	#-------------------------------------quite email despues de password en linea 88,comente la 94, email = :email
+	#-------------------------------------MODIFICACION DE #ACTUALIZAR USUARIO
 
 	public function actualizarHabitacionModel($datosModel, $tabla){
 
@@ -345,7 +348,7 @@ class Datos extends Conexion{
 
 	}
 	#ACTUALIZAR RESERVACION
-	#-------------------------------------quite email despues de password en linea 88,comente la 94, email = :email
+	#-------------------------------------MODIFICACION DE #ACTUALIZAR USUARIO
 
 	public function actualizarReservacionModel($datosModel, $tabla){
 
@@ -375,14 +378,16 @@ class Datos extends Conexion{
 
 	}
 
+
+
 	#BORRAR USUARIO
-	#------------------------------------
+	#------------------------------------Sentencia sql , necesita los parametros del array de datos y la tabla para borrar
 	public function borrarUsuarioModel($datosModel, $tabla){
 
 		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
 		$stmt->bindParam(":id", $datosModel, PDO::PARAM_INT);
 
-		if($stmt->execute()){
+		if($stmt->execute()){// ejecuta y dependiendo marcara "error o success"
 
 			return "success";
 
@@ -398,7 +403,7 @@ class Datos extends Conexion{
 
 	}
 	#BORRAR CLIENTE
-	#------------------------------------
+	#------------------------------------MODIFICACION DEBORRAR USUARIO
 	public function borrarClienteModel($datosModel, $tabla){
 
 		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
@@ -420,7 +425,7 @@ class Datos extends Conexion{
 
 	}
 	#BORRAR HABITACION
-	#------------------------------------
+	#------------------------------------MODIFICACION DEBORRAR USUARIO
 	public function borrarHabitacionModel($datosModel, $tabla){
 
 		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
@@ -442,7 +447,7 @@ class Datos extends Conexion{
 
 	}
 	#BORRAR RESERVACION
-	#------------------------------------
+	#------------------------------------MODIFICACION DEBORRAR USUARIO
 	public function borrarReservacionModel($datosModel, $tabla){
 
 		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");

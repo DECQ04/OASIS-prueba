@@ -1,7 +1,7 @@
 <?php
 
-session_start();
-session_destroy();
+session_start();//debe iniciar para salir
+session_destroy();//destuye la sesion actual y muestra mensaje
 
 ?>
 

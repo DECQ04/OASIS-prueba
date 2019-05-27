@@ -2,9 +2,9 @@
 
 class Paginas{
 	
-	public function enlacesPaginasModel($enlaces){
+	public function enlacesPaginasModel($enlaces){//recive un string de otras acciones del url y redirecciona 
 
-
+		##Tiene editarR =reservaciones, editarC=clientes , editarH =habitaciones , registroC =clientes y  registroH =habitaciones
 		if($enlaces == "ingresar" || $enlaces == "usuarios" || $enlaces == "editarR"|| $enlaces == "editar"|| $enlaces == "editarH" || $enlaces == "editarC"|| $enlaces == "salir"|| $enlaces== "reservar"|| $enlaces=="registroC"|| $enlaces=="registroH"){
 
 			$module =  "views/modules/".$enlaces.".php";
@@ -34,26 +34,22 @@ class Paginas{
 			$module =  "views/modules/usuarios.php";
 		
 		}
-		else if($enlaces == "okR"){
+		else if($enlaces == "okR"){//=reservar
 
 			$module =  "views/modules/reservar.php";
 		
 		}
-		else if($enlaces == "okCR"){
+		else if($enlaces == "okCR"){//=registro clienters
 
 			$module =  "views/modules/registroC.php";
 		
 		}
-		else if($enlaces == "okHR"){
+		else if($enlaces == "okHR"){//=registro habitaciones
 
 			$module =  "views/modules/registroH.php";
 		
 		}
-			/*else if($enlaces == "cambioC"){
-
-			$module =  "views/modules/usuarios.php";
-		
-		}*/
+			
 		else{
 
 			$module =  "views/modules/registro.php";
