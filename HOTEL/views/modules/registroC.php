@@ -25,7 +25,8 @@ if(!$_SESSION["validar"]){
 
 </form>
 
-<?php// parametros para el registro arriba
+<?php 
+// parametros para el registro arriba
 //<input type="email" placeholder="Email" name="emailRegistro" required>
 $registro = new MvcController();// $registro tipo MvcController, instancia
 $registro -> registroClienteController();// usa la funcion de MvcController para guardar
