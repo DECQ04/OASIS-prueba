@@ -26,7 +26,8 @@ if(!$_SESSION["validar"]){
 
 </form>
 
-<?php// parametros para el registro arriba
+<?php
+// parametros para el registro arriba
 $registro = new MvcController();// $registro tipo MvcController, instancia
 $registro -> reservaHabitacionController();// usa la funcion de MvcController para guardar
 
