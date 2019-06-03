@@ -1,8 +1,10 @@
 <nav>
 	<ul>
-		<li><a href="index.php">Registro</a></li>
-		<li><a href="index.php?action=ingresar">Ingreso</a></li>
-		<li><a href="index.php?action=usuarios">Usuarios</a></li>
-		<li><a href="index.php?action=salir">Salir</a></li>
+		<li><a href="index.php?action=registroMaestro">Maestros</a></li>
+		<li><a href="index.php?action=usuarios">Materias y Grupos</a></li>
+		<li><a href="index.php?action=Alumnos">Alumnos</a></li>
+		<li><a href="index.php?action=Carreras">Carreras</a></li>
+
+
 	</ul>
 </nav>

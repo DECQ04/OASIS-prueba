@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+<meta carset="utf-8">
+ 
+	
 	<title>Template</title>
 
 	<style>
@@ -11,7 +13,7 @@
 			margin:auto;
 			width:100%;
 			height:auto;
-			background:black;
+			background:#76EAF6;
 		}
 
 		nav ul{
@@ -29,7 +31,7 @@
 		}
 
 		nav ul li a{
-			color:white;
+			color:#2AB0AE;
 			text-decoration: none;
 		}
 
@@ -84,7 +86,7 @@
 
 </head>
 
-<body>
+<body align="center">
 
 <?php include "modules/navegacion.php"; ?>
 
