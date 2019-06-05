@@ -1,3 +1,9 @@
+
+
+
+<br/>
+<br/>
+<br/>
 <h1>REGISTRO DE ALUMNOS</h1>
  <form method="post">
     <input type="text" placeholder="Matricula" name="matriculaRegistro" required>  
@@ -15,7 +21,7 @@
  $registro -> registroAlumnoController();//Muestra el formulario para registrar y la funcion para traer los datos del formulario, los campos seran de acuerdo a los requeridos
 ?>
 <h1>ALUMNOS</h1>
- <table border="1">
+<table id="example" class="table table-dark" style="width:100%">
 	
 	<thead>
 		
@@ -44,6 +50,7 @@
 		?>
 
 	</tbody>
-
+	
  </table>
+ </div> 
 </br></br></br>

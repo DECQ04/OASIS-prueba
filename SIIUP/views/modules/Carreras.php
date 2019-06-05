@@ -3,7 +3,7 @@
  <form method="post">
 	<input type="text" placeholder="Nombre" name="nombreRegistro" required>
 
-	<input type="submit" value="Enviar">
+	<input type="submit" class="btn btn-secondary" value="Enviar">
 
  </form>
  <?php
@@ -11,7 +11,7 @@
  $registro -> registroCarreraController();//Muestra el formulario para registrar y la funcion para traer los datos del formulario, los campos seran de acuerdo a los requeridos
 ?>
 <h1>CARRERAS</h1>
- <table border="1">
+<table id="example" class="table table-dark" style="width:100%">
 	
 	<thead>
 		

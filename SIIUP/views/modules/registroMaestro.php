@@ -5,7 +5,7 @@
 	<input type="text" placeholder="Apellido" name="apellidoRegistro" required>
 	<input type="email" placeholder="Email" name="emailRegistro" required>
 	<input type="text" placeholder="id Carrera" name="id_carreraRegistro" required>
-	<input type="submit" value="Enviar">
+	<input type="submit" class="btn btn-secondary" value="Enviar">
 
  </form>
  <?php
@@ -13,7 +13,7 @@
  $registro -> registroMaestroController();//Muestra el formulario para registrar y la funcion para traer los datos del formulario, los campos seran de acuerdo a los requeridos
 ?>
 <h1>MAESTROS</h1>
-	<table border="1" align="center">
+<table id="example" class="table table-dark" style="width:100%">
 		
 		<thead>
 			

@@ -1,4 +1,6 @@
 
+
+
 <h1>REGISTRO DE MATERIAS</h1>
  <form method="post">
     <input type="text" placeholder="Id Maestro" name="id_maestroRegistro" required>  
@@ -7,7 +9,7 @@
 	<input type="text" placeholder="Créditos" name="creditosRegistro" required>
 	<input type="text" placeholder="Id Grupo" name="id_grupoRegistro" required>  
 
-	<input type="submit" value="Enviar">
+	<input type="submit" class="btn btn-secondary" value="Enviar">
 
  </form>
  <?php
@@ -15,7 +17,7 @@
  $registro -> registroMateriaController();//Muestra el formulario para registrar y la funcion para traer los datos del formulario, los campos seran de acuerdo a los requeridos
 ?>
 <h1>MATERIAS</h1>
- <table border="1">
+<table id="example" class="table table-dark" style="width:100%">
 	
 	<thead>
 		
@@ -52,7 +54,7 @@
  <form method="post">
 	<input type="text" placeholder="Cuatrimestre" name="cuatrimestreRegistro" required>
 
-	<input type="submit" value="Enviar">
+	<input type="submit" class="btn btn-secondary" value="Enviar">
 
  </form>
  <?php
@@ -61,7 +63,7 @@
  $registro -> registroGrupoController();//Muestra el formulario para registrar y la funcion para traer los datos del formulario, los campos seran de acuerdo a los requeridos
 ?>
 <h1>GRUPOS</h1>
- <table border="1">
+<table id="example" class="table table-dark" style="width:100%">
 	
 	<thead>
 		
