@@ -26,17 +26,6 @@ class MvcController{
 
 			$respuesta = Datos::registroAlumnoModel($datosController, "alumnos");
 
-			if($respuesta == "success"){
-
-				//header("location:index.php?action=ok");
-				echo "Registro Exitoso";
-
-			}
-
-			else{
-
-				header("location:index.php");
-			}
 
 		}
 
@@ -57,7 +46,7 @@ class MvcController{
 				<td>'.$item["carrera"].'</td>
 				<td>'.$item["id_grupo"].'</td>
 				<td><button>Editar</button></a></td>
-				<td><a href="index.php?action=inicio&idBorrar='.$item["id"].'"><button>Borrar</button></a></td>
+				<td><a href="idBorrar='.$item["id"].'"><button>Borrar</button></a></td>
 			</tr>';
 
 		}
