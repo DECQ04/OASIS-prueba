@@ -46,7 +46,7 @@ class MvcController{
 				<td>'.$item["carrera"].'</td>
 				<td>'.$item["id_grupo"].'</td>
 				<td><button>Editar</button></a></td>
-				<td><a href="idBorrar='.$item["id"].'"><button>Borrar</button></a></td>
+				<td><a><button>Borrar</button></a></td>
 			</tr>';
 
 		}
