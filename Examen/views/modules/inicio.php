@@ -32,23 +32,15 @@
 			<th>Id Grupo</th>
 			<th>Vale por un editar</th>
 			<th>Borrar</th>
-
 		</tr>
-
 	</thead>
-
 	<tbody>
-		
 		<?php
-
-		$vistaUsuario = new MvcController();
-		$vistaUsuario -> vistaAlumnoController();
-		$vistaUsuario -> borrarAlumnoController();
-
+		$vistaAlumno = new MvcController();
+		$vistaAlumno -> vistaAlumnoController();
+		$vistaAlumno -> borrarAlumnoController();
 		?>
-
 	</tbody>
-
 </table>
 
 
